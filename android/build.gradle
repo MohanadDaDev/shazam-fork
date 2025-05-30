@@ -30,7 +30,7 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 31
 
-    // ✅ Add this line
+    // ✅ This must use Groovy syntax — NO "=" sign
     namespace 'com.sstonn.flutter_shazam_kit'
 
     compileOptions {
@@ -51,9 +51,13 @@ android {
     }
 }
 
+// ✅ dependencies block must be OUTSIDE android {}
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation(name: "shazamkit-android-release", ext: "aar")
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+}
