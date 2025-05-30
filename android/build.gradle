@@ -30,8 +30,12 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 31
 
-    // ✅ This must use Groovy syntax — NO "=" sign
+    // ✅ Correct Groovy syntax (not namespace = '...')
     namespace 'com.sstonn.flutter_shazam_kit'
+
+    defaultConfig {
+        minSdkVersion 23
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -45,13 +49,9 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
-
-    defaultConfig {
-        minSdkVersion 23
-    }
 }
 
-// ✅ dependencies block must be OUTSIDE android {}
+// ✅ This must be outside `android {}` block
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation(name: "shazamkit-android-release", ext: "aar")
